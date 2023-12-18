@@ -64,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     SongModel song = snapshot.data![index];
+                    debugPrint(song.id.toString());
                     return ListTile(
                       leading: QueryArtworkWidget(
                         id: song.id,

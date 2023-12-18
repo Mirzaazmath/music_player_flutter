@@ -53,22 +53,31 @@ class _PlayAllSongsState extends State<PlayAllSongs> {
       debugPrint("Cannot Play song");
     }
     widget.audioPlayer.durationStream.listen((d) {
-      setState(() {
-        duration = d!;
-      });
+      if(mounted){
+        setState(() {
+          duration = d!;
+        });
+      }
+
 
     });
     widget.audioPlayer.positionStream.listen((p) {
-      setState(() {
-        postion = p;
-      });
+      if(mounted){
+        setState(() {
+          postion = p;
+        });
+      }
+
     });
     widget.audioPlayer.currentIndexStream.listen((index) {
-      setState(() {
-        if(index!=null){
-          widget.currentIndex=index;
-        }
-      });
+      if(mounted){
+        setState(() {
+          if(index!=null){
+            widget.currentIndex=index;
+          }
+        });
+      }
+
     });
   }
 
