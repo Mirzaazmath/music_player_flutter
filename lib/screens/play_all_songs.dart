@@ -93,14 +93,31 @@ class _PlayAllSongsState extends State<PlayAllSongs> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Center(
-                  child: CircleAvatar(
-                    radius: 100,
-                    child: Icon(
-                      Icons.music_note,
-                      size: 60,
-                    ),
-                  ),
+                 Center(
+                 child: Container(
+                   height: 200,
+                   width: 200,
+                   decoration: BoxDecoration(
+                     border: Border.all(color: Colors.black),
+                     shape: BoxShape.circle,
+                     image:const  DecorationImage(
+                       image: AssetImage("assets/circleBg.gif"),fit: BoxFit.cover
+                     ),
+                     boxShadow:const  [
+                       BoxShadow(
+                         color: Colors.blue,
+                         offset: Offset(-5,-5),
+                         blurRadius: 15
+                       ),
+                       BoxShadow(
+                      color: Colors.purple,
+                       offset: Offset(5,5),
+                     blurRadius: 15
+                 )
+                     ],
+                   ),
+
+                 ),
                 ),
                 const SizedBox(
                   height: 50,
