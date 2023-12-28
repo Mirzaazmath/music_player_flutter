@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio_background/just_audio_background.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'bloc/player_bloc/player_bloc.dart';
 import 'bloc/screen_index_bloc/index_bloc.dart';
 
 Future<void> main() async {
+  //// **** For Background PLay  *** ////////
   await JustAudioBackground.init(
     androidNotificationChannelId: 'com.ryanheise.bg_demo.channel.audio',
     androidNotificationChannelName: 'Audio playback',
@@ -25,14 +27,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers:[
-          BlocProvider( create: (context)=>IndexCubit(),),
-          BlocProvider( create: (context)=>PlayerBLoc(),),
-
+        providers: [
+          BlocProvider(create: (context) => IndexCubit(),),
+          BlocProvider(create: (context) => PlayerBLoc(),),
         ],
         child: MaterialApp(
           theme: ThemeData.dark(),
-          home:const  HomeScreen(),
+          home: const HomeScreen(),
         )
 
     );

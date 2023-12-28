@@ -3,6 +3,9 @@ import 'package:audio_player_app/components/empty_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:on_audio_query/on_audio_query.dart';
+
+
+import '../../components/loading_component.dart';
 final List<SongModel> allSongs=[];
 final audioQuery = OnAudioQuery();
 
@@ -20,9 +23,7 @@ class AllSongsScreen extends StatelessWidget {
         builder: (context, snapshot) {
 
           if (snapshot.data == null) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const  LoadingWidget();
           } else if (snapshot.data!.isEmpty) {
             return const  EmptyScreenWidget();
           } else {

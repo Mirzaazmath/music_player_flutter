@@ -3,6 +3,7 @@ import 'package:on_audio_query/on_audio_query.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/player_bloc/player_bloc.dart';
 import '../../components/empty_component.dart';
+import '../../components/loading_component.dart';
 import 'all_songs_screen.dart';
 
 
@@ -23,9 +24,7 @@ class RecentSongsScreen extends StatelessWidget {
               ignoreCase: true),
           builder: (context, snapshot) {
             if (snapshot.data == null) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const  LoadingWidget();
             } else if (snapshot.data!.isEmpty) {
               return const  EmptyScreenWidget();
             } else {

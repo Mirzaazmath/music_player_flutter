@@ -45,6 +45,8 @@ dependencies:
   just_audio_background: ^0.0.1-beta.11
   # State Management
   flutter_bloc: ^8.1.3
+  # To Loading Animation
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

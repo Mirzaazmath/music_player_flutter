@@ -21,25 +21,42 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget>songsScreen=[const FavouriteSongsScreen(),const  RecentSongsScreen() ,const AllSongsScreen()];
-  int selectedScreen=2;
+
+
 
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    requestPermission();
+    requestStoragePermission();
+  //  requestPermission();
 
   }
+  Future<void> requestStoragePermission() async {
+    try {
+      var status = await Permission.storage.request();
+      if (status.isGranted) {
+        debugPrint('Storage permission granted');
 
-  requestPermission() async {
+      } else {
 
-    var status = await Permission.storage.status;
-    if (status.isDenied) {
-      // We haven't asked for permission yet or the permission has been denied before, but not permanently.
-      Permission.storage.request();
-    } else {}
+        debugPrint('Storage permission denied');
+      }
+    } catch (e) {
+      debugPrint('Error requesting storage permission: $e');
+      // Handle the error appropriately
+    }
   }
+
+  // requestPermission() async {
+  //
+  //   var status = await Permission.storage.status;
+  //   if (status.isDenied) {
+  //     // We haven't asked for permission yet or the permission has been denied before, but not permanently.
+  //     Permission.storage.request();
+  //   } else {}
+  // }
 
   @override
   Widget build(BuildContext context) {

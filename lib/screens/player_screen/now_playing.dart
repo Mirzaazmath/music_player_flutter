@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../bloc/player_bloc/player_states.dart';
 import '../../bloc/player_bloc/player_bloc.dart';
@@ -58,6 +59,7 @@ class NowPlayingScreen extends StatelessWidget {
                    if(state is PlayerStatesUpdatedState){
                      var position=  context.read<PlayerBLoc>().postion;
                      var duration=  context.read<PlayerBLoc>().duration;
+                     var isShuffle=  context.read<PlayerBLoc>().isShuffle;
                      return  Column(
                        children: [
 
@@ -88,6 +90,24 @@ class NowPlayingScreen extends StatelessWidget {
                          const SizedBox(
                            height: 20,
                          ),
+                         Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           children: [
+                           isShuffle?  Shimmer.fromColors(
+                               baseColor: Colors.blueAccent,
+                               highlightColor: Colors.purple,
+                               child: IconButton(onPressed: (){
+                                 context.read<PlayerBLoc>().shuffleSongs();
+                                 }, icon: const  Icon(Icons.shuffle,color: Colors.grey,size: 30,)),
+                             ):IconButton(onPressed: (){
+                             context.read<PlayerBLoc>().shuffleSongs();
+                           }, icon: const  Icon(Icons.shuffle,color: Colors.grey,size: 30,)),
+
+                             const  Icon(Icons.favorite,color: Colors.red,),
+                           ],
+
+                         ),
+                       const   SizedBox(height: 10,),
                          Row(
                            children: [
                              Text(position.toString().split(".")[0]),

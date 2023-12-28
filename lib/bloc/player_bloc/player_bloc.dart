@@ -21,6 +21,8 @@ class PlayerBLoc extends Cubit<PlayerStates>{
   bool isPlaying=false;
   /// for current index
   int? currentIndex;
+  /// for shuffle
+  bool isShuffle=false;
 
   PlayerBLoc():super(PlayerInitialState());
 
@@ -152,6 +154,11 @@ void positionStream(){
     // Update the state
     emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
 
+  }
+  void shuffleSongs(){
+   audioPlayer.setShuffleModeEnabled(!isShuffle);
+   isShuffle=!isShuffle;
+   emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
   }
   ////////////******** Dispose ********///////////////
   @override
