@@ -1,31 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:on_audio_query/on_audio_query.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../bloc/player_bloc.dart';
+import 'all_songs_screen.dart';
 
-import '../play_all_songs.dart';
 
-class RecentSongsScreen extends StatefulWidget {
-  final AudioPlayer audioPlayer;
-  const RecentSongsScreen({Key? key,required this.audioPlayer}) : super(key: key);
+final List<SongModel> allSongs=[];
 
-  @override
-  State<RecentSongsScreen> createState() => _RecentSongsScreenState();
-}
+class RecentSongsScreen extends StatelessWidget {
 
-class _RecentSongsScreenState extends State<RecentSongsScreen> {
-  final audioQuery = OnAudioQuery();
+  const RecentSongsScreen({Key? key,}) : super(key: key);
 
-  final List<SongModel> allSongs=[];
-  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.play_arrow),
-        onPressed: () {
-          //  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PlayAllSongs(audioPlayer: audioPlayer,songList: allSongs,)));
-        },),
       body: FutureBuilder<List<SongModel>>(
           future: audioQuery.querySongs(
               sortType: SongSortType.DATE_ADDED,
@@ -67,7 +55,8 @@ class _RecentSongsScreenState extends State<RecentSongsScreen> {
                       ),
                       trailing: const Icon(Icons.play_arrow),
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PlayAllSongs(audioPlayer: widget.audioPlayer,songList: allSongs,currentIndex: index,)));
+                        context.read<PlayerBLoc>().playSong(allSongs, index);
+                        //Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PlayAllSongs(audioPlayer: widget.audioPlayer,songList: allSongs,currentIndex: index,)));
 
                       },
                     );

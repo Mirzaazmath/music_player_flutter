@@ -1,18 +1,13 @@
-import 'package:audio_player_app/screens/play_all_songs.dart';
+import 'package:audio_player_app/bloc/player_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:on_audio_query/on_audio_query.dart';
-class AllSongsScreen extends StatefulWidget {
-  final AudioPlayer audioPlayer;
-  const AllSongsScreen({super.key,required this.audioPlayer});
+final List<SongModel> allSongs=[];
+final audioQuery = OnAudioQuery();
 
-  @override
-  State<AllSongsScreen> createState() => _AllSongsScreenState();
-}
+class AllSongsScreen extends StatelessWidget {
+  const AllSongsScreen({super.key,});
 
-class _AllSongsScreenState extends State<AllSongsScreen> {
-  final List<SongModel> allSongs=[];
-  final audioQuery = OnAudioQuery();
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<SongModel>>(
@@ -54,9 +49,9 @@ class _AllSongsScreenState extends State<AllSongsScreen> {
                     ),
                     trailing:const  Icon(Icons.play_arrow),
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PlayAllSongs(audioPlayer: widget.audioPlayer,songList: allSongs,currentIndex: index,)));
-
-                    },
+                      //// here we calling the ploySong function to play the song
+                      context.read<PlayerBLoc>().playSong(allSongs, index);
+                      },
                   );
                 });
           }
