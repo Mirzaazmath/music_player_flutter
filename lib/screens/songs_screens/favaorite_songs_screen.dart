@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../../components/empty_component.dart';
 class FavouriteSongsScreen extends StatefulWidget {
   const FavouriteSongsScreen({super.key});
 
@@ -9,8 +11,6 @@ class FavouriteSongsScreen extends StatefulWidget {
 class _FavouriteSongsScreenState extends State<FavouriteSongsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("No Song Found"),
-    );
+    return  const EmptyScreenWidget();
   }
 }

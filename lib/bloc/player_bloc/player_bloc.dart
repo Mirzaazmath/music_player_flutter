@@ -1,4 +1,4 @@
-import 'package:audio_player_app/bloc/player_states.dart';
+import 'package:audio_player_app/bloc/player_bloc/player_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';

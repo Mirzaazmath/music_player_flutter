@@ -1,4 +1,5 @@
-import 'package:audio_player_app/bloc/player_bloc.dart';
+import 'package:audio_player_app/bloc/player_bloc/player_bloc.dart';
+import 'package:audio_player_app/components/empty_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -17,14 +18,13 @@ class AllSongsScreen extends StatelessWidget {
             uriType: UriType.EXTERNAL,
             ignoreCase: true),
         builder: (context, snapshot) {
+
           if (snapshot.data == null) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.data!.isEmpty) {
-            return const Center(
-              child: Text("No Songs Found"),
-            );
+            return const  EmptyScreenWidget();
           } else {
             allSongs.addAll(snapshot.data!);
             return ListView.builder(

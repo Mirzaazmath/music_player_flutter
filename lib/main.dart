@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'bloc/player_bloc.dart';
+import 'bloc/player_bloc/player_bloc.dart';
+import 'bloc/screen_index_bloc/index_bloc.dart';
 
 Future<void> main() async {
   await JustAudioBackground.init(
@@ -25,7 +26,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers:[
+          BlocProvider( create: (context)=>IndexCubit(),),
           BlocProvider( create: (context)=>PlayerBLoc(),),
+
         ],
         child: MaterialApp(
           theme: ThemeData.dark(),

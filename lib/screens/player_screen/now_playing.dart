@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/player_states.dart';
-import '../../bloc/player_bloc.dart';
+import '../../bloc/player_bloc/player_states.dart';
+import '../../bloc/player_bloc/player_bloc.dart';
 class NowPlayingScreen extends StatelessWidget {
   const NowPlayingScreen({super.key});
 
