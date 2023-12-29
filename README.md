@@ -4,6 +4,10 @@ A new Flutter project.
 
 ## Getting Started
 
+# isssue 
+<b> Only Some Permission related issues are pending everything is fine,  if you want to use the app give permission manually , Download the APK from Botton  </b>
+
+
 # Screenshot 1
 
 <img src="https://github.com/Mirzaazmath/music_player_flutter/blob/main/assets/output/Screenshot1.png" height="400">
