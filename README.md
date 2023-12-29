@@ -4,6 +4,50 @@ A new Flutter project.
 
 ## Getting Started
 
+# Screenshot 1
+
+<img src="https://github.com/Mirzaazmath/music_player_flutter/blob/main/assets/output/Screenshot1.png" height="400">
+
+
+# Screenshot 2
+
+<img src="https://github.com/Mirzaazmath/music_player_flutter/blob/main/assets/output/Screenshot2.png" height="400">
+
+
+
+
+# Screenshot 3
+
+<img src="https://github.com/Mirzaazmath/music_player_flutter/blob/main/assets/output/Screenshot3.png" height="400">
+
+
+
+
+
+# Screenshot 4
+
+<img src="https://github.com/Mirzaazmath/music_player_flutter/blob/main/assets/output/Screenshot4.png" height="400">
+
+
+
+
+# Screenshot 5
+
+<img src="https://github.com/Mirzaazmath/music_player_flutter/blob/main/assets/output/Screenshot5.png" height="400">
+
+
+
+
+# Screenshot 6
+
+<img src="https://github.com/Mirzaazmath/music_player_flutter/blob/main/assets/output/Screenshot6.png" height="400">
+
+
+
+# Screenshot 7
+
+<img src="https://github.com/Mirzaazmath/music_player_flutter/blob/main/assets/output/Screenshot7.png" height="400">
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
