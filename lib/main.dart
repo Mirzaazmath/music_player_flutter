@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'package:permission_handler/permission_handler.dart';
+
 import 'bloc/player_bloc/player_bloc.dart';
 import 'bloc/screen_index_bloc/index_bloc.dart';
 
@@ -15,6 +15,9 @@ Future<void> main() async {
     androidNotificationOngoing: true,
   );
   WidgetsFlutterBinding.ensureInitialized();
+  // Obtain shared preferences.
+
+
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -32,6 +35,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (context) => PlayerBLoc(),),
         ],
         child: MaterialApp(
+          title: "Audio Player",
           theme: ThemeData.dark(),
           home: const HomeScreen(),
         )

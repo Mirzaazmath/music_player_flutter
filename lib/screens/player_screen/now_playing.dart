@@ -4,6 +4,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../bloc/player_bloc/player_states.dart';
 import '../../bloc/player_bloc/player_bloc.dart';
+import '../../components/custom_heart_component.dart';
 class NowPlayingScreen extends StatelessWidget {
   const NowPlayingScreen({super.key});
 
@@ -90,22 +91,25 @@ class NowPlayingScreen extends StatelessWidget {
                          const SizedBox(
                            height: 20,
                          ),
-                         Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: [
-                           isShuffle?  Shimmer.fromColors(
-                               baseColor: Colors.blueAccent,
-                               highlightColor: Colors.purple,
-                               child: IconButton(onPressed: (){
-                                 context.read<PlayerBLoc>().shuffleSongs();
-                                 }, icon: const  Icon(Icons.shuffle,color: Colors.grey,size: 30,)),
-                             ):IconButton(onPressed: (){
-                             context.read<PlayerBLoc>().shuffleSongs();
-                           }, icon: const  Icon(Icons.shuffle,color: Colors.grey,size: 30,)),
+                         SizedBox(
+                           height: 50,
+                           child: Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children: [
+                             isShuffle?  Shimmer.fromColors(
+                                 baseColor: Colors.blueAccent,
+                                 highlightColor: Colors.purple,
+                                 child: IconButton(onPressed: (){
+                                   context.read<PlayerBLoc>().shuffleSongs();
+                                   }, icon: const  Icon(Icons.shuffle,color: Colors.grey,size: 30,)),
+                               ):IconButton(onPressed: (){
+                               context.read<PlayerBLoc>().shuffleSongs();
+                             }, icon: const  Icon(Icons.shuffle,color: Colors.grey,size: 30,)),
 
-                             const  Icon(Icons.favorite,color: Colors.red,),
-                           ],
+                               FavouriteWidget( id: state.id,)
+                             ],
 
+                           ),
                          ),
                        const   SizedBox(height: 10,),
                          Row(

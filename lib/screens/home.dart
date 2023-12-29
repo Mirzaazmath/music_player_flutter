@@ -63,6 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       /////////// ***************** APP BAR  **************////////////////
       appBar: AppBar(
+
+        surfaceTintColor: Colors.transparent,
         backgroundColor: Colors.transparent,
         title: const Text("Music Player"),
       ),

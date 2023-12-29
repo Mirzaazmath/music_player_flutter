@@ -1,4 +1,5 @@
 import 'package:audio_player_app/bloc/player_bloc/player_states.dart';
+import 'package:audio_player_app/components/toast_component.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
@@ -57,6 +58,7 @@ class PlayerBLoc extends Cubit<PlayerStates>{
       );
       //  audioPlayer.play(); this function starts the song
      audioPlayer.play();
+     audioPlayer.setLoopMode(LoopMode.all);
      // setting isPlaying to true to update our mini player
       isPlaying = true;
       // setting  currentIndex to given index to get all correct details
@@ -72,7 +74,7 @@ class PlayerBLoc extends Cubit<PlayerStates>{
    // # This function is responsible for  index of song
    indexStream();
    // Update the state
-    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
+    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??"",playList[currentIndex!].id.toString()));
  }
 ////////////******** To Update the duration of song ********///////////////
   void durationStream(){
@@ -81,7 +83,7 @@ class PlayerBLoc extends Cubit<PlayerStates>{
       // setting duration to  new value
       duration = d!;
       // Update the state
-      emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
+      emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??"",playList[currentIndex!].id.toString()));
     });
   }
 
@@ -92,7 +94,7 @@ void positionStream(){
     // setting position value to  new value
     postion = p;
     // Update the state
-    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
+    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??"",playList[currentIndex!].id.toString()));
 
   });
 }
@@ -108,7 +110,7 @@ void positionStream(){
     }
     isPlaying = !isPlaying;
     // Update the state
-    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
+    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??"",playList[currentIndex!].id.toString()));
 
   }
   ////////////******** To Change the Index when the player play another song ********///////////////
@@ -118,7 +120,7 @@ void positionStream(){
       if(index!=null){
         currentIndex=index;
         // Update the state
-        emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
+        emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??"",playList[currentIndex!].id.toString()));
       }
 
     });
@@ -130,7 +132,7 @@ void positionStream(){
     // updating the slider with seek method of audioPlayer
     audioPlayer.seek(duration);
     // Update the state
-    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
+    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??"",playList[currentIndex!].id.toString()));
   }
 ////////////******** To Play Next Song  ********///////////////
   void moveToNextSong(){
@@ -140,7 +142,7 @@ void positionStream(){
       audioPlayer.seekToNext();
     }
     // Update the state
-    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
+    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??"",playList[currentIndex!].id.toString()));
 
   }
 
@@ -152,13 +154,15 @@ void positionStream(){
       audioPlayer.seekToPrevious();
     }
     // Update the state
-    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
+    emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??"",playList[currentIndex!].id.toString()));
 
   }
   void shuffleSongs(){
    audioPlayer.setShuffleModeEnabled(!isShuffle);
+   showToast(!isShuffle?"Shuffle ON":"Shuffle OFF");
    isShuffle=!isShuffle;
-   emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??""));
+
+   emit(PlayerStatesUpdatedState(isPlaying,playList[currentIndex!].displayNameWOExt,playList[currentIndex!].artist??"",playList[currentIndex!].id.toString()));
   }
   ////////////******** Dispose ********///////////////
   @override

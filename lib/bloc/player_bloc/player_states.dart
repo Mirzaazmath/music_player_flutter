@@ -6,6 +6,7 @@ class PlayerStatesUpdatedState extends PlayerStates{
   bool isPlaying;
   String title;
   String artist;
-  PlayerStatesUpdatedState(this.isPlaying,this.title,this.artist);
+  String id;
+  PlayerStatesUpdatedState(this.isPlaying,this.title,this.artist,this.id);
 
 }
