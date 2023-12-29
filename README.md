@@ -4,7 +4,39 @@ A new Flutter project.
 
 ## Getting Started
 
-# isssue 
+## FEATURES
+<b>* Offline</b>
+
+<b>* Fetch all songs from devices</b>
+
+<b>* All Songs</b>
+
+<b>* Recent Added</b>
+
+<b>* Favourite</b>
+
+<b>* Local Database</b>
+
+<b>* Audio Player</b>
+
+<b>* Mini-Player</b>
+
+<b>* Loop</b>
+
+<b>* Shuffle</b>
+
+<b>* Play</b>
+
+<b>* Pause</b>
+
+<b>* SkipToNext</b>
+
+<b>* SkipToPrevious</b>
+
+<b>* Background play</b>
+
+
+##  isssue 
 <b> Only Some Permission related issues are pending everything is fine,  if you want to use the app give permission manually , Download the APK from Botton  </b>
 
 
